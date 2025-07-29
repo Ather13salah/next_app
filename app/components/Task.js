@@ -2,7 +2,7 @@
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import EditToDo from "../Edit";
+import EditToDo from "./Edit";
 const Task = ({ todos, setTodos }) => {
     const [taskId,setTaskId] = useState('')
     const [isEdit,setIsEdit] = useState(false) 
@@ -11,20 +11,19 @@ const Task = ({ todos, setTodos }) => {
         if (isEdit === true){
           return;
         }
-        todos.map((todo) =>{
-            let copyTodos = todos.filter((todo) =>todo.id!==id)  
-            setTodos(copyTodos)    
-        })
+        let copyTodos = todos.filter((todo) =>todo.id!==id)  
+        setTodos(copyTodos)
     }
     const handleEdit = (id,currentTask) =>{
         todos.map((todo) =>{
             if (todo.id === id) {
               setTaskId(id)
               setTaskToEdit(currentTask)
-              setIsEdit(true)
+              
             }
 
         })
+        setIsEdit(true)
     }
   return (
     <div>
